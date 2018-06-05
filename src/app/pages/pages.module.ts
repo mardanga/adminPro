@@ -5,6 +5,8 @@ import { ProgressComponent } from './progress/progress.component';
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
 import { HomeComponent } from './home.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingsService } from '../services/services.index';
 
 
 
@@ -14,7 +16,8 @@ import { HomeComponent } from './home.component';
         HomeComponent,
         DashboardComponent,
         Graficas1Component,
-        ProgressComponent
+        ProgressComponent,
+        SettingsComponent
     ],
     exports: [
         HomeComponent,
@@ -22,9 +25,11 @@ import { HomeComponent } from './home.component';
         Graficas1Component,
         ProgressComponent
     ],
+    providers: [SettingsService],
     imports: [
         SharedModule,
         PAGES_ROUTES
+
     ]
 })
 

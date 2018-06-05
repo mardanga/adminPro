@@ -9,7 +9,7 @@ import { SidebarService } from '../../services/services.index';
 export class SidebarComponent implements OnInit {
 
   constructor( public _sidebar: SidebarService ) {
-    
+
    }
 
 

@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { ServicesModule } from './services/services.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ import { ServicesModule } from './services/services.module';
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    ServicesModule
+    ServicesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

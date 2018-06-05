@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +22,6 @@ import { RouterModule } from '@angular/router';
         BreadcrumbsComponent,
         NotpagefoundComponent
     ],
-    imports:[RouterModule]
+    imports: [ RouterModule, CommonModule ]
 })
 export class SharedModule { }

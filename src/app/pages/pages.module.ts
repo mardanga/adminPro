@@ -15,6 +15,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from '../services/services.index';
 
 import { ChartsModule } from 'ng2-charts';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule(
 {
@@ -25,7 +27,9 @@ import { ChartsModule } from 'ng2-charts';
         ProgressComponent,
         SettingsComponent,
         IncrementadorComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        PromesasComponent,
+        RxjsComponent
 
     ],
     exports: [

@@ -1,6 +1,7 @@
 import { APP_ROUTES } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -8,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { ServicesModule } from './services/services.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     APP_ROUTES,
     PagesModule,
     ServicesModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule ,
+    HttpModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

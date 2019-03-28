@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 
 import { GraficoDonaComponent } from './../components/grafico-dona/grafico-dona.component';
 import { IncrementadorComponent } from './../components/incrementador/incrementador.component';
@@ -44,9 +45,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PAGES_ROUTES,
         FormsModule,
         ChartsModule,
-        CommonModule
+        CommonModule,
+        PipesModule
 
     ]
-})
+})    
 
 export class PagesModule { }

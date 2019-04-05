@@ -9,8 +9,11 @@ import swal from 'sweetalert'
 @Injectable()
 export class UsuarioService {
   
+  usuario: Usuario;
+  token: string;
 
   constructor(public _http: Http, public router: Router) {
+    this.cargar();
    }
 
   crearUsuario (usuario: Usuario)
@@ -38,6 +41,8 @@ export class UsuarioService {
         localStorage.setItem("idUsuario", resp.id);
         localStorage.setItem("token", resp.token);
         localStorage.setItem("usuario", JSON.stringify(resp.usuario));
+        this.usuario = resp.usuario;
+        this.token = resp.token;
         return true;
       })
   }
@@ -58,5 +63,11 @@ export class UsuarioService {
   estaLogueado() {
     
     return localStorage.getItem("token") && localStorage.getItem("token").length > 5;
+  }
+
+  cargar() {
+    if(localStorage.getItem("usuario") != null) {    
+      this.usuario = JSON.parse(localStorage.getItem("usuario"));
+    }
   }
 }

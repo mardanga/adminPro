@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettingsService } from './services/services.index';
+import { SettingsService, UsuarioService } from './services/services.index';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,7 @@ import { SettingsService } from './services/services.index';
 export class AppComponent {
   title = 'app';
 
-  constructor(private _ss: SettingsService) {}
+  constructor(private _ss: SettingsService, private _us: UsuarioService) {
+
+  }
 }

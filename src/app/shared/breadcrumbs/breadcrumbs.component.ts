@@ -18,7 +18,7 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(private router: Router, private title: Title, private meta: Meta) {
     this.crearObservable().subscribe(
       (data: any) => {
-        console.log(data);
+       // console.log(data);
         this.titulo = data.titulo;
         this.title.setTitle(this.title.getTitle() + ' - ' + this.titulo );
         const metaTag: MetaDefinition = {

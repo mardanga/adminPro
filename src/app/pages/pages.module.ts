@@ -18,6 +18,7 @@ import { SettingsService } from '../services/services.index';
 import { ChartsModule } from 'ng2-charts';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule(
 {
@@ -30,14 +31,16 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         IncrementadorComponent,
         GraficoDonaComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        PerfilComponent
 
     ],
     exports: [
         HomeComponent,
         DashboardComponent,
         Graficas1Component,
-        ProgressComponent
+        ProgressComponent,
+        PerfilComponent
     ],
     providers: [SettingsService],
     imports: [

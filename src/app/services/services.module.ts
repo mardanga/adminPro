@@ -1,3 +1,4 @@
+import { SubirArchivoService } from './subir-archivo/subir-archivo.service';
 import { LoginGuard } from './guards/login.guard';
 
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { SettingsService, SidebarService, SharedService, UsuarioService } from '
         SidebarService,
         SharedService,
         UsuarioService,
-        LoginGuard
+        LoginGuard,
+        SubirArchivoService
     ]
 })
 export class ServicesModule { }

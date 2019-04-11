@@ -1,3 +1,4 @@
+import { PerfilComponent } from './pages/perfil/perfil.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './login/register.component';

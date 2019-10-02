@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NotpagefoundComponent } from './notpagefound/notpagefound.component';
 import { RouterModule } from '@angular/router';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
         HeaderComponent,
         SidebarComponent,
         BreadcrumbsComponent,
-        NotpagefoundComponent
+        NotpagefoundComponent,
+        BusquedaComponent
     ],
     exports: [
         NotpagefoundComponent,

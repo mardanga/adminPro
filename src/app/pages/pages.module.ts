@@ -19,6 +19,9 @@ import { ChartsModule } from 'ng2-charts';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
 
 @NgModule(
 {
@@ -32,7 +35,10 @@ import { PerfilComponent } from './perfil/perfil.component';
         GraficoDonaComponent,
         PromesasComponent,
         RxjsComponent,
-        PerfilComponent
+        PerfilComponent,
+        UsuariosComponent,
+        HospitalesComponent,
+        MedicosComponent
 
     ],
     exports: [
@@ -40,7 +46,9 @@ import { PerfilComponent } from './perfil/perfil.component';
         DashboardComponent,
         Graficas1Component,
         ProgressComponent,
-        PerfilComponent
+        PerfilComponent,
+        UsuariosComponent
+
     ],
     providers: [SettingsService],
     imports: [

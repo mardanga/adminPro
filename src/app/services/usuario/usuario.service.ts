@@ -49,7 +49,7 @@ export class UsuarioService {
 
   private guardarStorage(id, token, usuario) {
     localStorage.setItem("idUsuario", id);
-    localStorage.setItem("token", token);
+    localStorage.setItem("tokenAdminPro", token);
     localStorage.setItem("usuario", JSON.stringify(usuario));
   }
 
@@ -60,7 +60,7 @@ export class UsuarioService {
   logout () {
 
       localStorage.removeItem("idUsuario");
-      localStorage.removeItem("token");
+      localStorage.removeItem("tokenAdminPro");
       localStorage.removeItem("usuario");
       
       this.router.navigate(['/login']);
@@ -68,21 +68,25 @@ export class UsuarioService {
 
   estaLogueado() {
     
-    return localStorage.getItem("token") && localStorage.getItem("token").length > 5;
+    return localStorage.getItem("tokenAdminPro") && localStorage.getItem("tokenAdminPro").length > 5;
   }
 
   cargar() {
     if(localStorage.getItem("usuario") != null) {    
       this.usuario = JSON.parse(localStorage.getItem("usuario"));
-      this.token = localStorage.getItem("token");
+      this.token = localStorage.getItem("tokenAdminPro");
     }
   }
 
   guardar(usuario: Usuario){
+    
      return this._http.put(environment.URL_SERVICIO + 'usuario/' + usuario._id +"?token=" + this.token, usuario)
      .map( (resp:any) => {
-        let usuarioDb= resp.json().usuario;
-        this.guardarStorage(usuario._id, this.token, usuarioDb);
+        
+        if(usuario._id === this.usuario._id) {
+          let usuarioDb: Usuario= resp.json().usuario;
+          this.guardarStorage(usuario._id, this.token, usuarioDb);
+        }
         swal("Usuario modificado", "","success" );
         return true;
       })
@@ -97,7 +101,29 @@ export class UsuarioService {
         this.guardarStorage(this.usuario._id, this.token, this.usuario);
         
       }
-    )
-    ;
+    );
+  }
+
+  obtenerUsuarios(idRegistro: number) {
+    return this._http.get(environment.URL_SERVICIO + 'usuario?desde=' + idRegistro)
+    .map( (resp: any)=>{
+      return resp.json();
+    })
+    
+  }
+
+  buscarUsuarios(texto: string) {
+    return this._http.get(environment.URL_SERVICIO + 'busqueda/coleccion/usuarios/' + texto)
+    .map( (resp: any)=>{
+      let rta = resp.json();
+      console.log(rta.data);
+      return rta.data;
+    })
+    
+  }
+
+  eliminarUsuario(usuario: Usuario) {
+    return this._http.delete(environment.URL_SERVICIO + 'usuario/'  + usuario._id +"?token=" + this.token);
+    
   }
 }

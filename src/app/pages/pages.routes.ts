@@ -1,3 +1,4 @@
+import { BusquedaComponent } from './../shared/busqueda/busqueda.component';
 import { LoginGuard } from './../services/guards/login.guard';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,11 @@ import { SettingsComponent } from './settings/settings.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
 
 const pagesRoutes: Routes = [
     {
@@ -25,6 +31,14 @@ const pagesRoutes: Routes = [
 
             { path: 'rxjs', component: RxjsComponent, data: {titulo: 'RxJs'} },
             { path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil'} },
+            { path: 'busqueda/:termino', component: BusquedaComponent, data: {titulo: 'Busqueda'} },
+            //mantenimiento
+            { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Matenimiento de usuarios'} },
+            { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Matenimiento de hospitales'} },
+            { path: 'medicos', component: MedicosComponent, data: {titulo: 'Matenimiento de medicos'} },
+            { path: 'medico/:id', component: MedicoComponent, data: {titulo: ''} },
+
+
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     }

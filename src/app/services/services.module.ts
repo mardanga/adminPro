@@ -1,10 +1,11 @@
+
 import { SubirArchivoService } from './subir-archivo/subir-archivo.service';
 import { LoginGuard } from './guards/login.guard';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SettingsService, SidebarService, SharedService, UsuarioService } from './services.index';
+import { SettingsService, SidebarService, SharedService, UsuarioService, HospitalService, MedicoService } from './services.index';
 
 @NgModule({
     imports: [ CommonModule  ],
@@ -16,7 +17,9 @@ import { SettingsService, SidebarService, SharedService, UsuarioService } from '
         SharedService,
         UsuarioService,
         LoginGuard,
-        SubirArchivoService
+        SubirArchivoService,
+        HospitalService,
+        MedicoService
     ]
 })
 export class ServicesModule { }

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Medico: Nombre de medico</h3>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMedico(f)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            <input type="text" class="form-control" [(ngModel)]="medico.nombre" name="nombre" required placeholder="Nombre medico">
+                        </div>
+                        <div class="form-group">
+                            <label>Hospital</label>
+                            <select name="hospital" class="form-control" [(ngModel)]="medico.hospital" (change)="cambiarHospital($event.target.value)">
+                          <option value="">Seleccionar hospital</option>
+                          <option [value]="h._id" *ngFor="let h of hospitales"> {{h.nombre}}</option>
+                        </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Guardar</button>
+                        <button class="btn btn-inverse waves-effect waves-light" [routerLink]="['/medicos']">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-3">
+        <div class="card">
+
+            <div class="card-body">
+                <h4 class="card-title">Hospital</h4>
+                <img alt="" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3" *ngIf="medico._id">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Fotografia</h4>
+                <img alt="">
+            </div>
+        </div>
+    </div>
+</div>

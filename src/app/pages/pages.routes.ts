@@ -1,3 +1,4 @@
+import { AdminGuard } from './../services/guards/admin.guard';
 import { BusquedaComponent } from './../shared/busqueda/busqueda.component';
 import { LoginGuard } from './../services/guards/login.guard';
 
@@ -33,7 +34,7 @@ const pagesRoutes: Routes = [
             { path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil'} },
             { path: 'busqueda/:termino', component: BusquedaComponent, data: {titulo: 'Busqueda'} },
             //mantenimiento
-            { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Matenimiento de usuarios'} },
+            { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Matenimiento de usuarios'}, canActivate:[AdminGuard] },
             { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Matenimiento de hospitales'} },
             { path: 'medicos', component: MedicosComponent, data: {titulo: 'Matenimiento de medicos'} },
             { path: 'medico/:id', component: MedicoComponent, data: {titulo: ''} },

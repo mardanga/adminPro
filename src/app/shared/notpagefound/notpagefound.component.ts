@@ -9,7 +9,10 @@ declare function initPlugins();
 })
 export class NotpagefoundComponent implements OnInit {
 
-  constructor() { }
+  anio: number;
+  constructor() { 
+    this.anio = new Date().getFullYear();
+  }
 
   ngOnInit() {
   }

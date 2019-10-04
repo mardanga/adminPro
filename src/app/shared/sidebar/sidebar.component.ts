@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   usuario: Usuario;
   constructor( public _sidebar: SidebarService, public _us: UsuarioService ) {
     this.usuario = _us.usuario;
+    _sidebar.cargarMenu();
    }
 
 

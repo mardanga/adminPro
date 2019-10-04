@@ -25,7 +25,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         BreadcrumbsComponent,
         NotpagefoundComponent
     ],
-    imports: [ RouterModule, 
+    imports: [ 
+        RouterModule, 
         CommonModule,
         PipesModule 
     ]

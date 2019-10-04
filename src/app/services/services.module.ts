@@ -1,3 +1,4 @@
+import { AdminGuard } from './guards/admin.guard';
 
 import { SubirArchivoService } from './subir-archivo/subir-archivo.service';
 import { LoginGuard } from './guards/login.guard';
@@ -19,7 +20,8 @@ import { SettingsService, SidebarService, SharedService, UsuarioService, Hospita
         LoginGuard,
         SubirArchivoService,
         HospitalService,
-        MedicoService
+        MedicoService,
+        AdminGuard
     ]
 })
 export class ServicesModule { }

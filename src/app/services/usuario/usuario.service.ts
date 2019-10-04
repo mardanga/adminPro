@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Http, Headers} from '@angular/http';
@@ -12,6 +13,7 @@ export class UsuarioService {
   
   usuario: Usuario;
   token: string;
+  menu : any[] = [];
 
   constructor(public _http: Http, public router: Router, private _sa: SubirArchivoService) {
     this.cargar();
@@ -39,18 +41,25 @@ export class UsuarioService {
     return this._http.post(environment.URL_SERVICIO + 'login', usuario)
       .map((resp: any) => {
         resp = resp.json();
+        console.log(resp);
         
         this.usuario = resp.usuario;
         this.token = resp.token;
-        this.guardarStorage(this.usuario._id, this.token,this.usuario);
+        this.menu = resp.menu;
+        this.guardarStorage(this.usuario._id, this.token,this.usuario, this.menu);
         return true;
-      })
+      })   .catch( err => {
+
+        swal( 'Error en el login', err.error.mensaje, 'error' );
+        return Observable.throw( err );
+      });
   }
 
-  private guardarStorage(id, token, usuario) {
+  private guardarStorage(id, token, usuario, menu) {
     localStorage.setItem("idUsuario", id);
     localStorage.setItem("tokenAdminPro", token);
     localStorage.setItem("usuario", JSON.stringify(usuario));
+    localStorage.setItem("menu", JSON.stringify(menu));
   }
 
   loginGoogle(token: string) {
@@ -62,6 +71,7 @@ export class UsuarioService {
       localStorage.removeItem("idUsuario");
       localStorage.removeItem("tokenAdminPro");
       localStorage.removeItem("usuario");
+      localStorage.removeItem("menu");
       
       this.router.navigate(['/login']);
   }
@@ -75,6 +85,7 @@ export class UsuarioService {
     if(localStorage.getItem("usuario") != null) {    
       this.usuario = JSON.parse(localStorage.getItem("usuario"));
       this.token = localStorage.getItem("tokenAdminPro");
+      this.menu = JSON.parse(localStorage.getItem("menu"));
     }
   }
 
@@ -85,11 +96,14 @@ export class UsuarioService {
         
         if(usuario._id === this.usuario._id) {
           let usuarioDb: Usuario= resp.json().usuario;
-          this.guardarStorage(usuario._id, this.token, usuarioDb);
+          this.guardarStorage(usuario._id, this.token, usuarioDb, this.menu);
         }
         swal("Usuario modificado", "","success" );
         return true;
-      })
+      })  .catch( err => {
+        swal( err.error.mensaje, err.error.errors.message, 'error' );
+        return Observable.throw( err );
+      });
      
      ;
   }
@@ -98,7 +112,7 @@ export class UsuarioService {
     this._sa.subirArchivo(archivo, 'usuario', this.usuario._id).then(
       (resp:any) => {
         this.usuario.img = resp.usuario.img;
-        this.guardarStorage(this.usuario._id, this.token, this.usuario);
+        this.guardarStorage(this.usuario._id, this.token, this.usuario, this.menu);
         
       }
     );
